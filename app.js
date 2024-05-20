@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
-const { createElement, seedElements, getElementById, getId, updateElement, subCount } = require('./utils.js');
+const PORT = process.env.PORT || 3000; //connects to port 3000
+const { createElement, seedElements, getId, getElementById, updateElement, subCount } = require('./utils.js'); //imports all the helper functions from utils.js
 const cors = require('cors');
 
 app.use(express.static("public"));
-app.use(express.json());
-app.use(cors()); // Middleware to parse JSON bodies
+app.use(express.json()); // Middleware to parse JSON bodies
+app.use(cors()); //middleware to use CORS guidelines
 
 const envelopes = [];
 seedElements(envelopes, 'envelopes');
@@ -48,7 +48,7 @@ app.put("/envelopes/:id", (req, res, next) => { // update an existing envelope
   }
 });
 
-app.delete('/envelopes/:id', (req, res, next) => {
+app.delete('/envelopes/:id', (req, res, next) => {        //delete an existing envelope
   const envelopeIndex = getId(req.params.id, envelopes);
   if (envelopeIndex !== -1) {
     envelopes.splice(envelopeIndex, 1);
@@ -59,6 +59,6 @@ app.delete('/envelopes/:id', (req, res, next) => {
   }
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, () => {    //connects code to server
   console.log(`Listening on PORT ${PORT}`);
 });

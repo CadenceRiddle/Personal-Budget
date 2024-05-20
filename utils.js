@@ -27,6 +27,11 @@ const seedElements = (arr, type) => { //seeds two envelopes as the program start
   }
 }
 
+const getElementById = (id, elementList) => {
+  return elementList.find((element) => {
+    return element.id === Number(id);
+  });
+};
 
 const getId = (id, elementList) => {  // searches for the ID
   return elementList.findIndex((element) => {
@@ -51,8 +56,8 @@ function subCount(){          //function to decrease the ID counter after a DELE
 }
 module.exports = {  //export all the modules
   createElement: createElement,
-  seedElements: seedElements, 
-  getElementById: getElementById, 
+  seedElements: seedElements,  
+  getElementById:getElementById,
   getId: getId,
   updateElement: updateElement,
   subCount
